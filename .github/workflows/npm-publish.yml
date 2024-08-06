@@ -19,18 +19,18 @@ jobs:
           release-type: node
           token: ${{ secrets.GITHUB_TOKEN }}
       - uses: actions/checkout@v4
-        if: ${{ steps.release.outputs.releases_created }}
+        if: ${{ steps.release.outputs.release_created }}
       - uses: actions/setup-node@v4
         with:
           cache: 'npm'
           node-version: 20.5
           registry-url: 'https://npm.pkg.github.com/'
-        if: ${{ steps.release.outputs.releases_created }}
+        if: ${{ steps.release.outputs.release_created }}
       - run: npm ci
-        if: ${{ steps.release.outputs.releases_created }}
+        if: ${{ steps.release.outputs.release_created }}
       - name: Publish packages
         id: publish
-        if: ${{ steps.release.outputs.releases_created }}
+        if: ${{ steps.release.outputs.release_created }}
         run: |
           git restore .
           npm publish
