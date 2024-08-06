@@ -1,38 +1,20 @@
-name: Publish package
+name: Publish package to GitHub Packages
 on:
-  push:
-    branches:
-      - main
-
-permissions:
-  contents: write
-  pull-requests: write
-  packages: write
-
+  release:
+    types: [published]
 jobs:
-  release-please:
+  publish:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
     steps:
-      - uses: googleapis/release-please-action@v4
-        id: release
-        with:
-          release-type: node
-          token: ${{ secrets.GITHUB_TOKEN }}
       - uses: actions/checkout@v4
-        if: ${{ steps.release.outputs.release_created }}
       - uses: actions/setup-node@v4
         with:
-          cache: 'npm'
-          node-version: 20.5
-          registry-url: 'https://npm.pkg.github.com/'
-        if: ${{ steps.release.outputs.release_created }}
+          node-version: '20.5'
+          registry-url: 'https://npm.pkg.github.com'
       - run: npm ci
-        if: ${{ steps.release.outputs.release_created }}
-      - name: Publish packages
-        id: publish
-        if: ${{ steps.release.outputs.release_created }}
-        run: |
-          git restore .
-          npm publish
+      - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
