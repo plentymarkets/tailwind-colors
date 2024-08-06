@@ -1,9 +1,9 @@
 {
-  "name": "palettey",
+  "name": "tailwind-colors",
   "version": "1.0.4",
   "description": "Generate a 10-color palette from a base color",
   "main": "index.js",
-  "repository": "bartbergmans/palettey",
+  "repository": "plentymarkets/tailwind-colors",
   "scripts": {
     "test": "jest"
   },
@@ -17,12 +17,18 @@
     "generator",
     "generate"
   ],
-  "author": "Bart Bergmans <mail@bartbergmans.com>",
+  "author": "plentysystems AG",
   "license": "MIT",
   "devDependencies": {
     "jest": "^27.5.1"
   },
   "dependencies": {
     "nanoid": "^3.3.1"
-  }
+  },
+  "files": [
+    "index.js",
+    "LICENSE",
+    "README.md",
+    "lib/**/*"
+  ]
 }
