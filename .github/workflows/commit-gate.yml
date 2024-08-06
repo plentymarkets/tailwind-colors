@@ -1,0 +1,16 @@
+name: Commit Gate
+on:
+  pull_request:
+    branches:
+      - main
+jobs:
+  commit-gate:
+    name: Commit Gate
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Install dependencies
+        run: npm install
+      - name: Run tests
+        run: npm run test
