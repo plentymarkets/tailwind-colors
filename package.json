@@ -4,6 +4,11 @@
   "description": "Generate a 10-color palette from a base color",
   "main": "index.js",
   "repository": "plentymarkets/tailwind-colors",
+  "private": false,
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
   "scripts": {
     "test": "jest"
   },
