@@ -1,6 +1,6 @@
 {
   "name": "@plentymarkets/tailwind-colors",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Generate a 10-color palette from a base color",
   "main": "index.js",
   "repository": "plentymarkets/tailwind-colors",
